@@ -12,7 +12,7 @@ body {
     top: 35%;
     left: 50%;
     width: clamp(300px, 70%, 1000px);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -70%);
     color: white;
     font-family:'Courier New', Courier, monospace;
     text-align: left;
