@@ -1,22 +1,33 @@
 const txt = document.getElementById('txt');
-var interval;
+var pointerInterval = setInterval(addPointer, 500);
+var letterInterval;
 var letter = 0;
+var str = `just a simple text`.split('');
 
-var str = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur unde assumenda deleniti iure ad error reiciendis cumque quis officia voluptatibus. Impedit, animi non repudiandae totam quia harum officiis blanditiis sunt, amet modi iste debitis ipsum laboriosam numquam neque molestiae! Illo ipsa ratione odit aut fuga facilis dolorem iusto. Porro, optio?'.split('');
+document.addEventListener('click', addLetterInterval);
 
-document.addEventListener('click', addInterval);
-
-function addInterval() {
-    clearInterval(interval);
-    interval = setInterval(addLetter, 100);
+function addLetterInterval() {
+    clearInterval(pointerInterval);
+    clearInterval(letterInterval);
+    txt.innerText = '';
+    letterInterval = setInterval(addLetter, 200); //controls typing speed
 }
 
 function addLetter() {
     txt.innerText += str[letter] == ' '? '\u00a0' : str[letter];
     letter++;
 
-    if (letter == str.length) {
-        document.removeEventListener('click', addInterval);
-        clearInterval(interval);
+    if (letter >= str.length) {
+        document.removeEventListener('click', addLetterInterval);
+        clearInterval(letterInterval);
+        pointerInterval = setInterval(addPointer, 500);
+    }
+}
+
+function addPointer() {
+    if (txt.innerText[txt.innerText.length - 1] == '_') {
+        txt.innerText = txt.innerText.slice(0, -1);
+    } else {
+        txt.innerText += '_';
     }
 }
