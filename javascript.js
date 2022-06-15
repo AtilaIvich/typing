@@ -1,27 +1,36 @@
 const txt = document.getElementById('txt');
+const changetxt = document.getElementById('changetxt');
 var pointerInterval = setInterval(addPointer, 500);
 var letterInterval;
 var letter = 0;
-var str = `just a simple text`.split('');
+var str = `just a simple text`.split(''); //default txt
 
 document.addEventListener('click', addLetterInterval);
+changetxt.addEventListener('click', addNewTxt);
 
 function addLetterInterval() {
     clearInterval(pointerInterval);
     clearInterval(letterInterval);
     txt.innerText = '';
-    letterInterval = setInterval(addLetter, 200); //controls typing speed
+    letterInterval = setInterval(addLetter, 250); //controls typing speed
 }
 
 function addLetter() {
+    document.removeEventListener('click', addLetterInterval);
+    changetxt.removeEventListener('click', addNewTxt);
+
     txt.innerText += str[letter] == ' '? '\u00a0' : str[letter];
     letter++;
 
     if (letter >= str.length) {
-        document.removeEventListener('click', addLetterInterval);
         clearInterval(letterInterval);
         pointerInterval = setInterval(addPointer, 500);
     }
+}
+
+function addNewTxt() {
+    var personaltxt = prompt(`Enter your text.`);
+    str = personaltxt.split('');
 }
 
 function addPointer() {
