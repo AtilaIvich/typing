@@ -9,14 +9,14 @@ body {
 
 #txt {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     width: clamp(300px, 70%, 1000px);
     transform: translate(-50%, -50%);
     color: white;
     font-family:'Courier New', Courier, monospace;
     text-align: left;
-    font-size: clamp(32px, 2.5vw, 144px);
+    font-size: clamp(24px, 2.5vw, 144px);
     overflow-wrap: break-word;
     hyphens: auto;
     user-select: none;
