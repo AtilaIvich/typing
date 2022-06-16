@@ -3,7 +3,7 @@ const changetxt = document.getElementById('changetxt');
 var pointerInterval = setInterval(addPointer, 500);
 var letterInterval;
 var letter = 0;
-var str = `ooola beatriz muahahah (sim, seu nome é naice)`.split(''); //default txt
+var str = `just a simple text`.split(''); //default txt
 
 document.addEventListener('click', addLetterInterval);
 changetxt.addEventListener('click', addNewTxt);
